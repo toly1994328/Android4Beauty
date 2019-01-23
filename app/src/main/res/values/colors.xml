@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF7F47</color>
+    <color name="colorPrimaryDark">#FF7F47</color>
+
+
+
+    <color name="colorAccent">#FF7F47</color>
+    <color name="colorBg">#ffffff</color>
+    <color name="colorPlayingText">#FF7F46</color>
+    <!--默认文本颜色-->
+    <color name="colorDefaultText">#363636</color>
+    <!--默认副文本颜色-->
+    <color name="colorDefaultSubText">#898989</color>
+    <color name="colorLine">#D6D6D6</color>
+    <color name="colorProgressBar">#ECE8E7</color>
+
+
+</resources>

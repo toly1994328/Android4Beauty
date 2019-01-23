@@ -1,0 +1,56 @@
+<resources>
+
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_88">88dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
+
+    <dimen name="sp_10">10sp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+
+    <dimen name="px_1">1px</dimen>
+
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="content_padding_half">8dp</dimen>
+    <!--剪裁图片-->
+    <dimen name="corner_thickness">5dp</dimen>
+    <dimen name="guideline_thickness">1px</dimen>
+
+    <dimen name="target_radius">24dp</dimen>
+    <dimen name="snap_radius">3dp</dimen>
+    <dimen name="corner_length">20dp</dimen>
+    <!--剪裁图片-->
+
+    <!--默认边距-->
+    <dimen name="default_padding">8dp</dimen>
+    <!--默认图标大小-->
+    <dimen name="default_icon_size">28dp</dimen>
+    <!--默认文字大小-->
+    <dimen name="default_text_size">18sp</dimen>
+    <!--默认副文字大小-->
+    <dimen name="default_sub_text_size">12sp</dimen>
+    <dimen name="select_top_text_size">15sp</dimen>
+    <dimen name="default_margin">8dp</dimen>
+
+    <dimen name="top_bar_height">40dp</dimen>
+    <dimen name="dp_260">260dp</dimen>
+    <dimen name="dp_280">280dp</dimen>
+
+</resources>

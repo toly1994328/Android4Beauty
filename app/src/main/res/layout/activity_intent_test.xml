@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <Button
+            android:text="发送短信"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp" android:id="@+id/id_btn_send_sms"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/id_btn_photo"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"/>
+    <Button
+            android:text="打开图库"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_photo"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_send_sms" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toStartOf="@+id/id_btn_comp" app:layout_constraintTop_toTopOf="@+id/id_btn_send_sms"/>
+    <Button
+            android:text="打开组件"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="@+id/id_btn_photo"
+            android:id="@+id/id_btn_comp"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_photo" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <Button
+            android:text="打开微信"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_tv_weichat" app:layout_constraintStart_toStartOf="@+id/id_btn_send_sms"
+            app:layout_constraintEnd_toEndOf="@+id/id_btn_send_sms" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/id_btn_send_sms"/>
+    <Button
+            android:text="仅Action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_just_action"
+            app:layout_constraintTop_toTopOf="@+id/id_tv_weichat"
+            app:layout_constraintBottom_toBottomOf="@+id/id_tv_weichat"
+            app:layout_constraintStart_toStartOf="@+id/id_btn_photo"/>
+    <Button
+            android:text="打开网页"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_open_web" app:layout_constraintStart_toStartOf="@+id/id_tv_weichat"
+            app:layout_constraintEnd_toEndOf="@+id/id_tv_weichat" app:layout_constraintHorizontal_bias="1.0"
+            android:layout_marginStart="3dp" android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/id_tv_weichat"/>
+    <Button
+            android:text="打开音乐"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_music"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_just_action"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_just_action"
+            app:layout_constraintStart_toStartOf="@+id/id_btn_comp"/>
+    <Button
+            android:text="打开视频"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_video" app:layout_constraintStart_toStartOf="@+id/id_btn_music"
+            app:layout_constraintEnd_toEndOf="@+id/id_btn_music"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_open_web"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_open_web" android:layout_marginBottom="4dp"/>
+    <Button
+            android:text="打开文本"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/id_btn_just_action"
+            app:layout_constraintEnd_toEndOf="@+id/id_btn_just_action"
+            android:id="@+id/id_btn_txt"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_open_web"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_open_web" android:layout_marginBottom="2dp"/>
+    <Button
+            android:text="打开图片"
+            android:layout_width="87dp"
+            android:layout_height="wrap_content" android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/id_btn_video" android:id="@+id/id_btn_pic"
+            app:layout_constraintStart_toStartOf="@+id/id_btn_video" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/id_btn_video" app:layout_constraintHorizontal_bias="0.0"/>
+    <Button
+            android:text="安装应用"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_app" app:layout_constraintStart_toStartOf="@+id/id_btn_txt"
+            app:layout_constraintEnd_toEndOf="@+id/id_btn_txt"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_pic"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_pic"/>
+</android.support.constraint.ConstraintLayout>

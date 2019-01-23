@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.toly1994.tolyservice">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!--添加权限-->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".service.MusicActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".intent.IntentActivity">
+
+        </activity>
+        <activity android:name=".intent.ActivityJustAction">
+            <intent-filter>
+                <action android:name="www.toly1994.com.ActivityJustAction"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <category android:name="www.toly1994.com.people"></category>
+                <category android:name="www.toly1994.com.coder"></category>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".intent.ActivityJustAction2">
+            <intent-filter>
+                <action android:name="www.toly1994.com.ActivityJustAction"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+                <category android:name="www.toly1994.com.dog"></category>
+                <category android:name="www.toly1994.com.erha"></category>
+            </intent-filter>
+        </activity>
+
+        <!--activity生命周期测试-->
+        <activity android:name=".activity.life.LifeCycleActivity">
+
+        </activity>
+
+        <activity android:name=".activity.life.DialogActivity"
+                  android:theme="@style/Theme.AppCompat.Light.Dialog"/>
+        <activity android:name=".activity.life.CommonActivity"/>
+
+
+        <!--activity数据传递测试-->
+        <activity android:name=".activity.data.FromActivity">
+
+        </activity>
+        <activity android:name=".activity.data.ToActivity"/>
+
+
+        <!--activity启动方式测试-->
+        <activity android:name=".activity.task.Activity1"
+                  android:launchMode="standard">
+
+        </activity>
+        <activity android:name=".activity.task.Activity2"
+                  android:launchMode="singleInstance"/>
+
+        <!--跳转动画测试-->
+        <activity android:name=".activity.anim.RedActivity">
+        </activity>
+        <activity android:name=".activity.anim.BlueActivity"/>
+
+        <!--intent数据测试-->
+        <activity android:name=".intent.data.FromActivity">
+
+        </activity>
+        <activity android:name=".intent.data.ToActivity"/>
+
+        <!--广播测试-->
+        <activity android:name=".receiver.BrActivity">
+
+        </activity>
+
+        <!--广播锁屏测试-->
+        <activity android:name=".receiver.ScreenBrActivity">
+
+        </activity>
+
+        <!--短息接收时广播测试-->
+        <activity android:name=".receiver.SMSBrActivity">
+
+        </activity>
+
+        <!--电量改变时广播测试-->
+        <activity android:name=".receiver.BatteryBrActivity">
+
+        </activity>
+        <!--app安装/卸载改变时广播测试-->
+        <activity android:name=".receiver.AppBrActivity">
+
+        </activity>
+        <activity android:name=".service.ToastSActivity">
+        </activity>
+        <receiver android:name=".receiver.receiver.AppBReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                <action android:name="android.intent.action.PACKAGE_REPLACED"/>
+                <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                <data android:scheme="package"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".service.service.MusicService"/>
+
+        <service android:name=".service.service.ToastService" android:exported="true">
+            <intent-filter>
+                <action android:name="www.toly1994.com.service.toast"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </service>
+        <service android:name=".service.service.MusicPlayerService">
+            <intent-filter>
+                <action android:name="www.toly1994.com.music.player"></action>
+            </intent-filter>
+        </service>
+
+        <!--android:authorities="本应用包名.fileProvider"-->
+        <provider android:name="android.support.v4.content.FileProvider"
+                  android:authorities="com.toly1994.tolyservice.fileProvider"
+                  android:grantUriPermissions="true"
+                  android:exported="false">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths"/>
+        </provider>
+        <receiver android:name=".receiver.receiver.ToastBroadcastReceiver">
+            <intent-filter>
+                <action android:name="www.toly1994.com.br.toast"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

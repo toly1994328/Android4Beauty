@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!--Android/data/本应用包名/-->
+    <external-path path="Android/data/com.toly1994.tolyservice/" name="files_root" />
+    <external-path path="." name="external_storage_root" />
+</paths>

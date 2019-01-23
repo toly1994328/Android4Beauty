@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/dp_16"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <ImageView
+            android:id="@+id/id_iv_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding"
+            android:src="@mipmap/icon_default"
+    />
+
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/id_iv_icon"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/id_tv_music_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="勇气"
+                android:textColor="@color/colorDefaultText"
+                android:textSize="@dimen/default_text_size"/>
+
+        <TextView
+                android:id="@+id/id_tv_singer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="葛强丽"
+                android:textColor="@color/colorDefaultSubText"
+                android:textSize="@dimen/default_sub_text_size"/>
+    </LinearLayout>
+
+
+    <com.toly1994.tolyservice.widget.ToggleImageView
+            android:id="@+id/id_btn_play"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/id_iv_next"
+            android:src="@drawable/icon_stop_2"
+            app:z_toggle_src="@drawable/icon_start_2"
+
+            android:layout_marginTop="@dimen/default_margin" android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin" android:layout_marginBottom="@dimen/default_margin"/>
+
+    <com.toly1994.tolyservice.widget.AlphaImageView
+            android:id="@+id/id_iv_next"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/default_margin"
+            android:layout_toLeftOf="@id/id_iv_pre_list"
+            android:src="@drawable/icon_next"
+    />
+
+    <com.toly1994.tolyservice.widget.AlphaImageView
+            android:id="@+id/id_iv_prev"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:layout_toLeftOf="@id/id_btn_play"
+            android:layout_marginRight="@dimen/default_margin"
+
+            android:src="@drawable/icon_prev"
+            android:layout_toStartOf="@+id/id_btn_play"
+            android:layout_alignTop="@id/id_iv_next"
+
+    />
+
+    <com.toly1994.tolyservice.widget.AlphaImageView
+            android:id="@+id/id_iv_pre_list"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="@dimen/default_margin"
+
+
+            android:src="@drawable/icon_music_list"/>
+
+</RelativeLayout>

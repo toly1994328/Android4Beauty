@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <Button
+            android:id="@+id/id_btn_bind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="绑定服务"
+            app:layout_constraintEnd_toStartOf="@+id/id_btn_unbind"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+            android:id="@+id/id_btn_unbind"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="解绑服务"
+            app:layout_constraintStart_toEndOf="@+id/id_btn_bind"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_bind"/>
+    <Button
+            android:text="开启服务"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_start" app:layout_constraintStart_toEndOf="@+id/id_btn_unbind"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_unbind"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_unbind"/>
+
+
+    <com.toly1994.tolyservice.widget.ProgressView
+            android:id="@+id/id_pv_pre"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorLine"
+            app:layout_constraintBottom_toTopOf="@id/in_main_list_bottom_bar"
+            app:z_bar_color="@color/colorPrimary"/>
+
+    <include layout="@layout/in_ac_music_bottom_bar"
+             android:id="@+id/in_main_list_bottom_bar">
+
+    </include>
+    <Button
+            android:text="销毁服务"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_btn_kill" app:layout_constraintStart_toEndOf="@+id/id_btn_start"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="@+id/id_btn_start"
+            app:layout_constraintBottom_toBottomOf="@+id/id_btn_start"/>
+    <EditText
+            android:hint="请输入内容"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/id_et_msg" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/id_btn_start"/>
+
+</android.support.constraint.ConstraintLayout>
