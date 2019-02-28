@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * 说明：音乐播放服务
  */
 public class MusicPlayerService extends Service {
-    private MusicPlayerStub musicPlayerStub;
+    private MusicPlayerWithBrStub musicPlayerStub;
 
     @Override
     public void onCreate() {
@@ -25,8 +25,7 @@ public class MusicPlayerService extends Service {
         musicList.add("/sdcard/toly/勇气-梁静茹-1772728608-1.mp3");
         musicList.add("/sdcard/toly/草戒指_魏新雨.aac");
         musicList.add("/sdcard/toly/郭静 - 下一个天亮 [mqms2].flac");
-
-        musicPlayerStub = new MusicPlayerStub(this);
+        musicPlayerStub = new MusicPlayerWithBrStub(this);
         try {
             musicPlayerStub.create(musicList);
         } catch (RemoteException e) {

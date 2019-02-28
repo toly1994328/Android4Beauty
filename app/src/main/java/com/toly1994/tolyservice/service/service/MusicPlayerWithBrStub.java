@@ -1,11 +1,12 @@
 package com.toly1994.tolyservice.service.service;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.os.Handler;
 import android.os.RemoteException;
 import com.toly1994.tolyservice.IMusicPlayerService;
+import com.toly1994.tolyservice.app.Cons;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,18 +18,18 @@ import java.util.TimerTask;
  * 作者：张风捷特烈<br/>
  * 时间：2019/1/23/023:17:11<br/>
  * 邮箱：1981462002@qq.com<br/>
- * 说明：MusicPlayerStub--Binder对象+Handler更新进度
+ * 说明：MusicPlayerStub--Binder对象+广播更新进度
  */
-public class MusicPlayerStub extends IMusicPlayerService.Stub {
+public class MusicPlayerWithBrStub extends IMusicPlayerService.Stub {
+    private static final String TAG = "MusicPlayerWithBrStub";
     private MediaPlayer mPlayer;
     private boolean isInitialized = false;//是否已初始化
     private int mCurrentPos = 0;//当前播放第几个音乐
     private List<String> mMusicList;//音乐列表
     private Context mContext;
     private Timer mTimer;
-    private Handler mHandler;
 
-    public MusicPlayerStub(Context mContext) {
+    public MusicPlayerWithBrStub(Context mContext) {
         this.mContext = mContext;
     }
 
@@ -43,7 +44,6 @@ public class MusicPlayerStub extends IMusicPlayerService.Stub {
 
         //构造函数中
         mTimer = new Timer();//创建Timer
-        mHandler = new Handler();//创建Handler
 
         //开始方法中
         mTimer.schedule(new TimerTask() {
@@ -52,11 +52,12 @@ public class MusicPlayerStub extends IMusicPlayerService.Stub {
                 if (mPlayer.isPlaying()) {
                     int pos = mPlayer.getCurrentPosition();
                     int duration = mPlayer.getDuration();
-                    mHandler.post(() -> {
-                        if (mOnSeekListener != null) {
-                            mOnSeekListener.onSeek((int) (pos * 1.f / duration * 100));
-                        }
-                    });
+
+                    //发送广播更新进度
+                    Intent intent = new Intent(Cons.ACTION_UPDATE);
+                    int progress = (int) (pos * 100.f / duration);
+                    intent.putExtra(Cons.DATA_MUSIC_POSITION, progress);
+                    mContext.sendBroadcast(intent);
                 }
             }
         }, 0, 1000);
@@ -108,7 +109,8 @@ public class MusicPlayerStub extends IMusicPlayerService.Stub {
 
     @Override
     public void release() throws RemoteException {
-
+        mTimer.cancel();
+        mPlayer.release();
     }
 
     @Override

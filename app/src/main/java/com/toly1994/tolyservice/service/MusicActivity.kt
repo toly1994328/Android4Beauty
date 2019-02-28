@@ -1,15 +1,15 @@
 package com.toly1994.tolyservice.service
 
-import android.content.ComponentName
-import android.content.Intent
-import android.content.ServiceConnection
+import android.content.*
 import android.os.Bundle
 import android.os.IBinder
+import com.toly1994.tolyservice.IMusicPlayerService
 import com.toly1994.tolyservice.R
+import com.toly1994.tolyservice.app.Cons
 import com.toly1994.tolyservice.permission.Permission
 import com.toly1994.tolyservice.permission.PermissionActivity
+import com.toly1994.tolyservice.receiver.UpdateReceiver
 import com.toly1994.tolyservice.service.service.MusicPlayerService
-import com.toly1994.tolyservice.service.service.MusicPlayerStub
 import kotlinx.android.synthetic.main.ac_music.*
 import kotlinx.android.synthetic.main.in_ac_music_bottom_bar.*
 
@@ -21,13 +21,14 @@ class MusicActivity : PermissionActivity() {
 
     private var musicIntent: Intent? = null
     private var mConn: ServiceConnection? = null
-    private lateinit var mMusicPlayer: MusicPlayerStub
+    private lateinit var mMusicPlayer: IMusicPlayerService
+    private lateinit var mReceiver: BroadcastReceiver
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ac_music)
-
+        registerReceiver()
         id_btn_bind.setOnClickListener {
             applyPermissions(Permission._WRITE_EXTERNAL_STORAGE)
             bindMusicService()
@@ -79,6 +80,23 @@ class MusicActivity : PermissionActivity() {
     }
 
     /**
+     * 注册广播
+     */
+    private fun registerReceiver() {
+        mReceiver = UpdateReceiver(id_pv_pre)
+        val filter = IntentFilter()
+        filter.addAction(Cons.ACTION_UPDATE)
+        registerReceiver(mReceiver, filter)//注册
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        unregisterReceiver(mReceiver)//注销广播
+        mMusicPlayer.release()
+
+    }
+
+    /**
      * 绑定服务
      */
     private fun bindMusicService() {
@@ -86,10 +104,8 @@ class MusicActivity : PermissionActivity() {
         mConn = object : ServiceConnection {
             // 当连接成功时候调用
             override fun onServiceConnected(name: ComponentName, service: IBinder) {
-                mMusicPlayer = service as MusicPlayerStub
 
-                mMusicPlayer.setOnSeekListener {
-                        per_100 -> id_pv_pre.setProgress(per_100) }
+                mMusicPlayer = IMusicPlayerService.Stub.asInterface(service)
             }
 
             // 当连接断开时候调用

@@ -6,7 +6,10 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!--添加权限-->
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <!--添加权限：读取短信-->
     <uses-permission android:name="android.permission.READ_SMS"/>
+    <!--添加权限：读取联系人-->
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
             android:allowBackup="true"
@@ -15,12 +18,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <!--音乐播放器-->
         <activity android:name=".service.MusicActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
-
-            <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
 
         </activity>
         <activity android:name=".intent.IntentActivity">
@@ -105,6 +104,25 @@
         </activity>
         <activity android:name=".service.ToastSActivity">
         </activity>
+
+        <!--Handler测试-->
+        <activity android:name=".handler.HandlerActivity">
+
+        </activity>
+        <!--当msg自身有Runnable回调时-->
+        <activity android:name=".handler.HandlerMsgWithCbkActivity">
+
+        </activity>
+        <activity android:name=".handler.HandlerOtherActivity">
+
+        </activity>
+        <activity android:name=".provider.ProviderActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <receiver android:name=".receiver.receiver.AppBReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED"/>
@@ -145,6 +163,10 @@
             </intent-filter>
         </receiver>
 
+        <provider
+                android:name=".provider.swordProvider.SwordProvider"
+                android:authorities="toly1994.com.sword"
+                android:exported="true"/>
     </application>
 
 </manifest>
