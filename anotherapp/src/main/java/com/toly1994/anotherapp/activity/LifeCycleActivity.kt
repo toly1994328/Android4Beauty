@@ -1,28 +1,70 @@
-package com.toly1994.tolyservice.activity.life
+package com.toly1994.anotherapp.activity
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import com.toly1994.tolyservice.R
-import kotlinx.android.synthetic.main.ac_lifecycle.*
+import com.toly1994.anotherapp.R
+import com.toly1994.anotherapp.Utils
+import com.toly1994.anotherapp.fragment.BoxFragment
+import com.toly1994.anotherapp.itf.IBoxSender
+import kotlinx.android.synthetic.main.activity_fragment.*
 
-class LifeCycleActivity : AppCompatActivity() {
+class LifeCycleActivity : AppCompatActivity(), IBoxSender {
 
     override//Activity第一次创建时调用
     fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ac_lifecycle)
+        setContentView(R.layout.activity_fragment)
         Log.e(TAG, "LifeCycleActivity--onCreate: ")
         title = "LifeCycleActivity"
 
         if (savedInstanceState != null) {
             title = savedInstanceState.getString("name")
         }
-        initEvent()
+        initFragment()
+
+
+        fl_title.setOnClickListener {
+            update(Utils.randomColor())
+        }
     }
 
+    override fun update(color: String) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fl_title, BoxFragment.newInstance(color,""))
+            .commit()
+    }
+
+
+    /**
+     * 动态加载Fragment
+     */
+    private fun initFragment() {
+//        val bundle = Bundle()//创建Bundle对象
+//        bundle.putString("color", );//为bundle赋值
+//        val boxFragment = BoxFragment()
+//        boxFragment.arguments = bundle
+
+        var boxFragment = BoxFragment.newInstance("#238AF8","")
+        var radFragment = BoxFragment.newInstance("#ff0000","")
+
+
+//        radFragment.setmOnDataSend {
+//            id_tv_result.text = it
+//        }
+
+        //3.动态添加 （控件id,fragment对象）
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.fl_title, boxFragment)
+            .add(R.id.fl_content, radFragment)
+            .commit()//4.提交事务
+    }
+
+    override fun setData(s: String) {
+        id_tv_result.text = s
+    }
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
@@ -30,16 +72,6 @@ class LifeCycleActivity : AppCompatActivity() {
         outState?.putString("name", "toly")
     }
 
-    private fun initEvent() {
-        id_btn_task_activity.setOnClickListener {
-            startActivity(Intent(this, CommonActivity::class.java))
-        }
-
-        id_btn_dialog.setOnClickListener {
-            startActivity(Intent(this, DialogActivity::class.java))
-        }
-
-    }
 
     override//Activity可见的时候调用
     fun onStart() {

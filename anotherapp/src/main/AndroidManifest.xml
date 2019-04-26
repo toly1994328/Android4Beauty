@@ -22,9 +22,17 @@
         </activity>
         <activity android:name=".MusicServiceTestActivity"/>
         <activity android:name=".SwordProviderActivity">
+
+        </activity>
+        <activity android:name=".activity.ActFragmentActivity">
+
+        </activity>
+        <activity android:name=".activity.LifeCycleActivity">
+
+        </activity>
+        <activity android:name=".activity.ViewPagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
-
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>

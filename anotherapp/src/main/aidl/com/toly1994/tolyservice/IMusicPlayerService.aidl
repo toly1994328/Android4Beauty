@@ -16,6 +16,9 @@ interface IMusicPlayerService {
     void release();
     boolean isPlaying();
     void seek(int pre_100);
+
+
+
     //加in
     void create(in List<String> filePaths);
 }

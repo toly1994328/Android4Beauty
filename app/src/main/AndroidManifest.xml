@@ -44,8 +44,13 @@
         </activity>
 
         <!--activity生命周期测试-->
-        <activity android:name=".activity.life.LifeCycleActivity">
-
+        <activity android:name=".activity.life.LifeCycleActivity"
+                  android:configChanges="orientation"
+                  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity android:name=".activity.life.DialogActivity"
@@ -117,10 +122,7 @@
 
         </activity>
         <activity android:name=".provider.ProviderActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
 
         <receiver android:name=".receiver.receiver.AppBReceiver">

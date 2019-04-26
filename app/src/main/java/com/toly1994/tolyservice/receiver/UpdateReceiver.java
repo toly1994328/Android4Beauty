@@ -33,8 +33,6 @@ public class UpdateReceiver extends BroadcastReceiver {
                 progressView.setProgress(progress);
             }
         }
-
-
     }
 }
 
