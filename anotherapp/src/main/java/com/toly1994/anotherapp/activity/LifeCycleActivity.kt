@@ -7,6 +7,7 @@ import android.util.Log
 import com.toly1994.anotherapp.R
 import com.toly1994.anotherapp.Utils
 import com.toly1994.anotherapp.fragment.BoxFragment
+import com.toly1994.anotherapp.fragment.PagerFragment
 import com.toly1994.anotherapp.itf.IBoxSender
 import kotlinx.android.synthetic.main.activity_fragment.*
 
@@ -32,7 +33,7 @@ class LifeCycleActivity : AppCompatActivity(), IBoxSender {
 
     override fun update(color: String) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fl_title, BoxFragment.newInstance(color,""))
+            .replace(R.id.fl_title, BoxFragment.newInstance(color, ""))
             .commit()
     }
 
@@ -46,9 +47,9 @@ class LifeCycleActivity : AppCompatActivity(), IBoxSender {
 //        val boxFragment = BoxFragment()
 //        boxFragment.arguments = bundle
 
-        var boxFragment = BoxFragment.newInstance("#238AF8","")
-        var radFragment = BoxFragment.newInstance("#ff0000","")
-
+        var boxFragment = BoxFragment.newInstance("#ff0000")
+//        var radFragment = BoxFragment.newInstance("#ff0000","")
+        var content = PagerFragment()
 
 //        radFragment.setmOnDataSend {
 //            id_tv_result.text = it
@@ -58,12 +59,12 @@ class LifeCycleActivity : AppCompatActivity(), IBoxSender {
         supportFragmentManager
             .beginTransaction()
             .add(R.id.fl_title, boxFragment)
-            .add(R.id.fl_content, radFragment)
+            .add(R.id.fl_content, content)
             .commit()//4.提交事务
     }
 
     override fun setData(s: String) {
-        id_tv_result.text = s
+//        id_tv_result.text = s
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {

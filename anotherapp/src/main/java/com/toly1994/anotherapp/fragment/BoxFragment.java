@@ -27,6 +27,14 @@ public class BoxFragment extends Fragment {
     private boolean initialization; // 界面是否已创建完成
     private boolean isVisibleToUser; // 是否对用户可见
 
+    public static BoxFragment newInstance(String color) {
+        BoxFragment fragment = new BoxFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("color", color);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     public static BoxFragment newInstance(String color, String info) {
         BoxFragment fragment = new BoxFragment();
         Bundle bundle = new Bundle();
@@ -82,7 +90,7 @@ public class BoxFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.e(TAG, "Fragment -卍卍卍卍卍卍卍- onCreateView: " + info);
-        View view = inflater.inflate(R.layout.fg_blue, container, false);
+        View view = inflater.inflate(R.layout.fg_title, container, false);
 
         return view;
     }
@@ -95,6 +103,7 @@ public class BoxFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             String result = bundle.getString("color");
+            String info = bundle.getString("info");
             view.setBackgroundColor(Color.parseColor(result));
             txt.setText(info);
         }
