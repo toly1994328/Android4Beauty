@@ -44,9 +44,7 @@
         </activity>
 
         <!--activity生命周期测试-->
-        <activity android:name=".activity.life.LifeCycleActivity"
-                  android:configChanges="orientation"
-                  android:screenOrientation="portrait">
+        <activity android:name=".activity.life.LifeCycleActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

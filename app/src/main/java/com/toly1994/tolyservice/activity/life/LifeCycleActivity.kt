@@ -30,6 +30,10 @@ class LifeCycleActivity : AppCompatActivity() {
         outState?.putString("name", "toly")
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
+        super.onRestoreInstanceState(savedInstanceState)
+        Log.e(TAG, "LifeCycleActivity--onRestoreInstanceState: ")
+    }
     private fun initEvent() {
         id_btn_task_activity.setOnClickListener {
             startActivity(Intent(this, CommonActivity::class.java))

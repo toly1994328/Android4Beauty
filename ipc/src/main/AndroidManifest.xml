@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.toly1994.ipc">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <application
+            android:allowBackup="true"
+            android:name=".CatApplication"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity0">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".MainActivity1"
+                  android:process=":ipc">
+        </activity>
+
+        <activity android:name=".MainActivity2"
+                  android:process="com.toly1994.ipc.test">
+        </activity>
+        <activity android:name=".MessengerActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".AidlActivity">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".ProviderActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity android:name=".ServerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service android:name=".CatService"
+                 android:process="com.toly1994.ipc.service.cat"/>
+
+        <service android:name=".FeedCatService"
+                 android:process="com.toly1994.ipc.service.feed.cat"/>
+
+        <service android:name=".SocketService"
+                 android:process="com.toly1994.ipc.service.socket.feed.cat"/>
+
+        <provider android:authorities="toly1994.com.cat"
+                  android:name=".CatContentProvider"
+                  android:exported="true"
+                  android:process="com.toly1994.ipc.provider.cat"
+        />
+    </application>
+
+</manifest>
